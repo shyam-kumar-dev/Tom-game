@@ -33,7 +33,7 @@ const story = {
     text: "Tom gives a great answer and earns a star!",
     img: "earned a star.jpg",
     choices: [
-      { text: "Next", next: "level3_start", points: 0, reset: true }
+      { text: "Next Level", next: "level3_start", points: 0, reset: true }
     ]
   },
   level2_wrongAnswer: {
@@ -173,22 +173,25 @@ const story = {
   }
 };
 
+
 let score = 0;
 let timeLeft = 60;
 let timerInterval;
 let typingTimeout;
 
-// ✅ Track player session
+// ✅ Player session data
 let playerID = Date.now().toString();
 let startDate = new Date();
 let dateString = startDate.toLocaleDateString();
 let timeString = startDate.toLocaleTimeString();
+let levelsRemaining = 8;
 
 const scoreEl = document.getElementById("score");
 const timerEl = document.getElementById("timer");
 const storyDiv = document.getElementById("story");
 const storyImg = document.getElementById("story-img");
 const choicesDiv = document.getElementById("choices");
+const levelsLeftEl = document.getElementById("levels-left");
 
 const bgMusic = document.getElementById("bg-music");
 const welcomeScreen = document.getElementById("welcome-screen");
@@ -223,7 +226,6 @@ startBtn.addEventListener("click", () => {
   bgMusic.volume = 0.4;
   bgMusic.play();
 
-
   fetch("https://sheetdb.io/api/v1/i7uxj0badyqr6", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -237,6 +239,8 @@ startBtn.addEventListener("click", () => {
     })
   });
 
+  levelsRemaining = 7;
+  levelsLeftEl.textContent = `Levels Left: ${levelsRemaining}`;
   showScene("level1_start");
   startTimer();
 });
@@ -265,7 +269,7 @@ function resetTimer() {
 function startTimer() {
   timerInterval = setInterval(() => {
     timeLeft--;
-    timerEl.textContent = `Time Left: ${timeLeft}s`;
+    timerEl.textContent = `Time: ${timeLeft}s`;
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
       alert("Time's up! Final Score: " + score);
@@ -288,7 +292,7 @@ function showScene(sceneKey) {
   if (sceneKey === "level8_correctAnswer" || sceneKey === "level8_wrongAnswer") {
     setTimeout(() => {
       showWinningScreen();
-    }, 3000);
+    }, 6000);
     return;
   }
 
@@ -296,11 +300,20 @@ function showScene(sceneKey) {
     const btn = document.createElement("button");
     btn.textContent = choice.text;
     btn.className = "choice-btn";
+
     btn.onclick = () => {
       updateScore(choice.points || 0);
       if (choice.reset || choice.points > 0) resetTimer();
+
+
+      if (choice.text.toLowerCase().includes("next level")) {
+        levelsRemaining--;
+        levelsLeftEl.textContent = `Levels Left: ${levelsRemaining}`;
+      }
+
       showScene(choice.next);
     };
+
     choicesDiv.appendChild(btn);
   });
 }
@@ -314,7 +327,7 @@ function showWinningScreen() {
   finalScoreSpan.textContent = score;
   winningScreen.style.display = "block";
 
-  // ✅ Update the score using PUT via ID
+
   fetch(`https://sheetdb.io/api/v1/i7uxj0badyqr6/id/${playerID}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -328,12 +341,18 @@ function restartGame() {
   const winningScreen = document.getElementById("winning-screen");
   score = 0;
   timeLeft = 60;
+  levelsRemaining = 8;
   updateScore(0);
   timerEl.textContent = `Time Left: ${timeLeft}s`;
+  levelsLeftEl.textContent = `Levels Left: ${levelsRemaining}`;
   winningScreen.style.display = "none";
   gameContainer.style.display = "block";
   topBar.style.display = "flex";
   controls.style.display = "flex";
   showScene("level1_start");
   startTimer();
+}
+
+function exitGame() {
+  window.location.href = "https://shyam-kumar-dev.github.io/My-portfolio-/";
 }
