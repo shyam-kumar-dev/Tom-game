@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tom Sawyer Adventure Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Welcome Instructions -->
+  <div id="welcome-screen">
+    <h2>Welcome to Tom Sawyer Adventure</h2>
+    <p style="text-align: left; max-width: 600px;">
+      📜 <strong>Instructions:</strong><br>
+      1. Read the story carefully.<br>
+      2. Make choices to help Tom succeed.<br>
+      3. Correct choices gain points, wrong ones may lose them.<br>
+      4. You have 60 seconds per level. Timer resets on "Next Level".<br>
+      5. Use the controls below the game to manage music and timer.<br><br>
+      ✅ Tick the box to begin the game.
+    </p>
+    <label><input type="checkbox" id="agree-checkbox" /> I understand the instructions.</label><br><br>
+    <button id="start-game" class="small-btn" disabled>Start Game</button>
+  </div>
+
+  <div id="name-input-wrapper">
+  <label for="playerName">Enter your name:</label>
+  <input type="text" id="playerName" placeholder="Your name">
+</div>
+
+  <!-- Game Info -->
+  <div id="top-bar">
+    <div id="player-name" style="font-weight: bold; color: white;">Player: </div>
+    <div id="score">Score: 0</div>
+    <div id="timer">Time Left: 60s</div>
+  </div>
+  
+
+  <!-- Game Container -->
+  <div id="game-container" class="game-container">
+    <h3>The Tom Sawyer Adventure</h3>
+    <img id="story-img" src="" alt="Scene" />
+    <div id="story"></div>
+    <div id="choices"></div>
+  </div>
+<!-- Controls -->
+  <div id="controls">
+    <button class="control-btn" onclick="toggleMusic()">🔊 Toggle Music</button>
+    <button class="control-btn" onclick="resetTimer()">⏱ Reset Timer</button>
+  </div>
+    <!-- Winning Screen -->
+  <div id="winning-screen" class="winning-screen">
+    <div class="trophy">🏆</div>
+    <h2>Congratulations!</h2>
+    <div class="player-stats">
+      <p>You've completed Tom Sawyer's Adventure!</p>
+      <p class="final-score">Your Score: <span id="final-score">0</span></p>
+    </div>
+    <button id="replay-button" class="replay-btn" onclick="restartGame()">Play Again</button>
+  </div>
+  
+
+  <!-- Sounds -->
+  <audio id="bg-music" src="bgm.mp3" loop ></audio>
+  <audio id="click-sound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+  <audio id="success-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-01.mp3"></audio>
+  <audio id="fail-sound" src="https://www.soundjay.com/misc/sounds/fail-trombone-01.mp"></audio>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
