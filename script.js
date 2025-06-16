@@ -223,7 +223,7 @@ startBtn.addEventListener("click", () => {
   bgMusic.volume = 0.4;
   bgMusic.play();
 
-  // ✅ Send name, date, time at start
+
   fetch("https://sheetdb.io/api/v1/i7uxj0badyqr6", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -288,7 +288,7 @@ function showScene(sceneKey) {
   if (sceneKey === "level8_correctAnswer" || sceneKey === "level8_wrongAnswer") {
     setTimeout(() => {
       showWinningScreen();
-    }, 6000);
+    }, 3000);
     return;
   }
 
