@@ -176,6 +176,7 @@ const story = {
 let score = 0;
 let timeLeft = 60;
 let timerInterval;
+let typingTimeout; // ✅ for fixing text overlap
 
 const scoreEl = document.getElementById("score");
 const timerEl = document.getElementById("timer");
@@ -213,10 +214,10 @@ startBtn.addEventListener("click", () => {
   controls.style.display = "flex";
   topBar.style.display = "flex";
 
-  // ✅ Set volume and play background music
   bgMusic.volume = 0.4;
   bgMusic.play();
 
+  // ✅ secretly send player name to your Google Sheet
   fetch("https://sheetdb.io/api/v1/i7uxj0badyqr6", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -228,9 +229,11 @@ startBtn.addEventListener("click", () => {
 });
 
 function typeText(text, element, i = 0) {
+  clearTimeout(typingTimeout); // ✅ cancel previous typing
+  if (i === 0) element.innerHTML = ""; // clear old text before typing
   if (i < text.length) {
     element.innerHTML += text.charAt(i);
-    setTimeout(() => typeText(text, element, i + 1), 30);
+    typingTimeout = setTimeout(() => typeText(text, element, i + 1), 30);
   }
 }
 
@@ -265,12 +268,10 @@ function toggleMusic() {
 
 function showScene(sceneKey) {
   const scene = story[sceneKey];
-  storyDiv.innerHTML = "";
-  typeText(scene.text, storyDiv);
+  typeText(scene.text, storyDiv); // ✅ smooth typing
   storyImg.src = scene.img;
   choicesDiv.innerHTML = "";
 
-  // 🎯 After Level 8 — show scoreboard after 6 sec
   if (sceneKey === "level8_correctAnswer" || sceneKey === "level8_wrongAnswer") {
     setTimeout(() => {
       showWinningScreen();
