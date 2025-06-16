@@ -176,7 +176,13 @@ const story = {
 let score = 0;
 let timeLeft = 60;
 let timerInterval;
-let typingTimeout; // ✅ for fixing text overlap
+let typingTimeout;
+
+// ✅ Track player session
+let playerID = Date.now().toString();
+let startDate = new Date();
+let dateString = startDate.toLocaleDateString();
+let timeString = startDate.toLocaleTimeString();
 
 const scoreEl = document.getElementById("score");
 const timerEl = document.getElementById("timer");
@@ -217,10 +223,18 @@ startBtn.addEventListener("click", () => {
   bgMusic.volume = 0.4;
   bgMusic.play();
 
+  // ✅ Send name, date, time at start
   fetch("https://sheetdb.io/api/v1/i7uxj0badyqr6", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ data: [{ name: playerName }] })
+    body: JSON.stringify({
+      data: [{
+        id: playerID,
+        name: playerName,
+        date: dateString,
+        time: timeString
+      }]
+    })
   });
 
   showScene("level1_start");
@@ -228,8 +242,8 @@ startBtn.addEventListener("click", () => {
 });
 
 function typeText(text, element, i = 0) {
-  clearTimeout(typingTimeout); // ✅ cancel previous typing
-  if (i === 0) element.innerHTML = ""; // clear old text before typing
+  clearTimeout(typingTimeout);
+  if (i === 0) element.innerHTML = "";
   if (i < text.length) {
     element.innerHTML += text.charAt(i);
     typingTimeout = setTimeout(() => typeText(text, element, i + 1), 30);
@@ -267,7 +281,7 @@ function toggleMusic() {
 
 function showScene(sceneKey) {
   const scene = story[sceneKey];
-  typeText(scene.text, storyDiv); // ✅ smooth typing
+  typeText(scene.text, storyDiv);
   storyImg.src = scene.img;
   choicesDiv.innerHTML = "";
 
@@ -299,6 +313,15 @@ function showWinningScreen() {
   controls.style.display = "none";
   finalScoreSpan.textContent = score;
   winningScreen.style.display = "block";
+
+  // ✅ Update the score using PUT via ID
+  fetch(`https://sheetdb.io/api/v1/i7uxj0badyqr6/id/${playerID}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      data: { score: score }
+    })
+  });
 }
 
 function restartGame() {
