@@ -261,7 +261,13 @@
   padding: 20px;
   border-radius: 20px;
   text-align: center;
+  animation: neon-glow 1.5s infinite alternate;
 }
+ @keyframes neon-glow {
+            0% { box-shadow: 0px 0px 10px rgba(0, 34, 255, 0.5); }
+            100% { box-shadow: 0px 0px 25px rgb(0, 94, 255); }
+        }
+
     .winning-screen {
       display: none;
       position: fixed;

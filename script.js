@@ -217,7 +217,6 @@ startBtn.addEventListener("click", () => {
   bgMusic.volume = 0.4;
   bgMusic.play();
 
-  // ✅ secretly send player name to your Google Sheet
   fetch("https://sheetdb.io/api/v1/i7uxj0badyqr6", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
