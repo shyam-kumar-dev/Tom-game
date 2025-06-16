@@ -17,7 +17,9 @@
       2. Make choices to help Tom succeed.<br>
       3. Correct choices gain points, wrong ones may lose them.<br>
       4. You have 60 seconds per level. Timer resets on "Next Level".<br>
-      5. Use the controls below the game to manage music and timer.<br><br>
+      5. Total 8 Levels in the game <br>
+      6. Final score will be Given after 4 sec of Level 8 <br>
+      7. Use the controls below the game to manage music and timer.<br><br>
       ✅ Tick the box to begin the game.
     </p>
     <label><input type="checkbox" id="agree-checkbox" /> I understand the instructions.</label><br><br>
@@ -33,7 +35,8 @@
   <div id="top-bar">
     <div id="player-name" style="font-weight: bold; color: white;">Player: </div>
     <div id="score">Score: 0</div>
-    <div id="timer">Time Left: 60s</div>
+    <div id="timer">Time: 60s</div>
+    <div id="levels-left">Levels Left: 7</div>
   </div>
   
 
@@ -58,6 +61,7 @@
       <p class="final-score">Your Score: <span id="final-score">0</span></p>
     </div>
     <button id="replay-button" class="replay-btn" onclick="restartGame()">Play Again</button>
+    <div class="exit"><a href="https://shyam-kumar-dev.github.io/My-portfolio-/">Exit</a></div>
   </div>
   
 
