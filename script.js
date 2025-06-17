@@ -135,8 +135,8 @@ const story = {
     text: "Tom and Huck discover the treasure hidden in an old chest!",
     img: "images/found chest.jpg",
     choices: [
-      { text: "Take only some and leave 🎒", next: "level7_correctAnswer", points: 10 },
-      { text: "Take everything 💰", next: "level7_wrongAnswer", points: -5 }
+      { text: "Split together🎒", next: "level7_correctAnswer", points: 10 },
+      { text: "fight for Treasure 💰", next: "level7_wrongAnswer", points: -5 }
     ]
   },
   level7_correctAnswer: {
