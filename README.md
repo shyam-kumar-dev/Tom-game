@@ -35,7 +35,7 @@ Players navigate through Tom's journey by making choices that affect the story, 
 - **HTML5**
 - **CSS3**
 - **JavaScript (Vanilla)**
-- **Google Sheets + SheetDB** (for backendless data storage)
+- **Canva images**
 
 ---
 
