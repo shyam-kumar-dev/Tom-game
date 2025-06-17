@@ -211,7 +211,7 @@ agreeCheckbox.addEventListener("change", () => {
 startBtn.addEventListener("click", () => {
   const playerName = playerNameInput.value.trim();
   if (!playerName) {
-    alert("Please enter your name to start.");
+    showAlert("Please enter your name to start");
     return;
   }
 
@@ -355,4 +355,12 @@ function restartGame() {
 
 function exitGame() {
   window.location.href = "https://shyam-kumar-dev.github.io/My-portfolio-/";
+}
+function showAlert(message) {
+  document.getElementById("alert-message").textContent = message;
+  document.getElementById("custom-alert").style.display = "flex";
+}
+
+function closeAlert() {
+  document.getElementById("custom-alert").style.display = "none";
 }
