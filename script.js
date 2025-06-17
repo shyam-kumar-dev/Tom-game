@@ -1,7 +1,7 @@
 const story = {
   level1_start: {
     text: "Tom is supposed to paint the fence. What should he do?",
-    img: "paint 1.jpg",
+    img: "images/paint 12.jpg",
     choices: [
       { text: "Trick friends into painting", next: "level1_friendsPaint", points: 10 },
       { text: "Run away", next: "level1_caughtByAunt", points: -5 }
@@ -9,21 +9,21 @@ const story = {
   },
   level1_friendsPaint: {
     text: "Tom convinces his friends it's fun. They paint while he relaxes.",
-    img: "friends paint.jpg",
+    img: "images/friends paint.jpg",
     choices: [
       { text: "Next Level", next: "level2_start", points: 0, reset: true }
     ]
   },
   level1_caughtByAunt: {
     text: "Tom is caught by Aunt Polly. He must finish the job himself.",
-    img: "Tom caught by aunt.jpg",
+    img: "images/Tom caught by aunt.jpg",
     choices: [
       { text: "Try Again", next: "level1_start", points: 0 }
     ]
   },
   level2_start: {
     text: "Tom is now in school. The teacher asks a tough question. What should he do?",
-    img: "Teacher asked question.jpg",
+    img: "images/Teacher asked question.jpg",
     choices: [
       { text: "Answer confidently", next: "level2_correctAnswer", points: 10 },
       { text: "Look at his friend’s book", next: "level2_wrongAnswer", points: -5 }
@@ -31,21 +31,21 @@ const story = {
   },
   level2_correctAnswer: {
     text: "Tom gives a great answer and earns a star!",
-    img: "earned a star.jpg",
+    img: "images/earned a star.jpg",
     choices: [
       { text: "Next Level", next: "level3_start", points: 0, reset: true }
     ]
   },
   level2_wrongAnswer: {
     text: "Tom is caught cheating and gets detention.",
-    img: "classroom_cheating_scene.jpg",
+    img: "images/classroom_cheating_scene.jpg",
     choices: [
       { text: "Retry", next: "level2_start", points: 0 }
     ]
   },
   level3_start: {
     text: "Tom sees Becky Thatcher in class and decides to impress her",
-    img: "tom saw becky.jpg",
+    img: "images/tom saw becky.jpg",
     choices: [
       { text: "Say nothing", next: "level3_wrongAnswer", points: -5 },
       { text: "Pass her a love note 💌", next: "level3_correctAnswer", points: 10 }
@@ -53,21 +53,21 @@ const story = {
   },
   level3_correctAnswer: {
     text: "Becky blushes 🥰 and smiles. She seems to like Tom too!",
-    img: "becky 1.jpg",
+    img: "images/becky 1.jpg",
     choices: [
       { text: "Next Level", next: "level4_start", points: 0, reset: true }
     ]
   },
   level3_wrongAnswer: {
     text: "Tom hesitates. Becky walks away with her friends.",
-    img: "walk away.jpg",
+    img: "images/walk away.jpg",
     choices: [
       { text: "Retry", next: "level3_start", points: 0 }
     ]
   },
   level4_start: {
     text: "Tom and Huck venture into the dark forest. A mysterious sound echoes through the trees.",
-    img: "sound in the forest.jpg",
+    img: "images/sound in the forest.jpg",
     choices: [
       { text: "🕵️ Investigate the sound", next: "level4_correctAnswer", points: 10 },
       { text: "Run away scared 🏃", next: "level4_wrongAnswer", points: -5 }
@@ -75,21 +75,21 @@ const story = {
   },
   level4_correctAnswer: {
     text: "Tom and his friends lead to a hidden treasure clue 🧭",
-    img: "Find clue.jpg",
+    img: "images/Find clue.jpg",
     choices: [
       { text: "Next Level", next: "level5_start", points: 0, reset: true }
     ]
   },
   level4_wrongAnswer: {
     text: "They run away. The adventure ends early.",
-    img: "ran away.jpg",
+    img: "images/ran away.jpg",
     choices: [
       { text: "Retry", next: "level4_start", points: 0 }
     ]
   },
   level5_start: {
     text: "Tom and Huck find a treasure map near the old tree.",
-    img: "map near tree.jpg",
+    img: "images/map near tree.jpg",
     choices: [
       { text: "Ignore the map 🗑️", next: "level5_wrongAnswer", points: -5 },
       { text: "Follow the map carefully 🧭", next: "level5_correctAnswer", points: 10 }
@@ -97,21 +97,21 @@ const story = {
   },
   level5_correctAnswer: {
     text: "The map leads them to a spooky cave entrance.",
-    img: "boys looking map.jpg",
+    img: "images/boys looking map.jpg",
     choices: [
       { text: "Next Level", next: "level6_start", points: 0, reset: true }
     ]
   },
   level5_wrongAnswer: {
     text: "They miss the chance to find treasure.",
-    img: "missed chance.jpg",
+    img: "images/missed chance.jpg",
     choices: [
       { text: "Retry", next: "level5_start", points: 0 }
     ]
   },
   level6_start: {
     text: "In the cave, they hear Injun Joe’s voice echoing in the dark.",
-    img: "joe voice in cave.jpg",
+    img: "images/joe voice in cave.jpg",
     choices: [
       { text: "Hide behind the rock 🪨", next: "level6_correctAnswer", points: 10 },
       { text: "Call out loudly 📣", next: "level6_wrongAnswer", points: -5 }
@@ -119,21 +119,21 @@ const story = {
   },
   level6_correctAnswer: {
     text: "They stay hidden and discover a secret tunnel!",
-    img: "hidden behind the rock.jpg",
+    img: "images/hidden behind the rock.jpg",
     choices: [
       { text: "Next Level", next: "level7_start", points: 0, reset: true }
     ]
   },
   level6_wrongAnswer: {
     text: "Injun Joe hears them and they lose time escaping.",
-    img: "caught.jpg",
+    img: "images/caught.jpg",
     choices: [
       { text: "Retry Level", next: "level6_start", points: 0 }
     ]
   },
   level7_start: {
     text: "Tom and Huck discover the treasure hidden in an old chest!",
-    img: "found chest.jpg",
+    img: "images/found chest.jpg",
     choices: [
       { text: "Take only some and leave 🎒", next: "level7_correctAnswer", points: 10 },
       { text: "Take everything 💰", next: "level7_wrongAnswer", points: -5 }
@@ -141,21 +141,21 @@ const story = {
   },
   level7_correctAnswer: {
     text: "They are respected for their honesty. Villagers cheer! 🎉",
-    img: "appreciation.jpg",
+    img: "images/appreciation.jpg",
     choices: [
       { text: "Next Level", next: "level8_start", points: 0, reset: true }
     ]
   },
   level7_wrongAnswer: {
     text: "Greed leads to complications. The chest breaks open!",
-    img: "chest break.jpg",
+    img: "images/chest break.jpg",
     choices: [
       { text: "Retry Level", next: "level7_start", points: 0 }
     ]
   },
   level8_start: {
     text: "Tom returns home a hero. Aunt Polly is proud.",
-    img: "aunt appreciated.jpg",
+    img: "images/aunt appreciated.jpg",
     choices: [
       { text: "Share the story with friends 📖", next: "level8_correctAnswer", points: 10 },
       { text: "Keep it a secret 🤫", next: "level8_wrongAnswer", points: -5 }
@@ -163,12 +163,12 @@ const story = {
   },
   level8_correctAnswer: {
     text: "Everyone celebrates Tom’s bravery and kindness. 🥳",
-    img: "success.jpg",
+    img: "images/success.jpg",
     choices: []
   },
   level8_wrongAnswer: {
     text: "Tom smiles quietly. The adventure stays his secret. 😏",
-    img: "smile secretly.jpg",
+    img: "images/smile secretly.jpg",
     choices: []
   }
 };
